@@ -1,0 +1,35 @@
+<%- include ('../partials/head') %>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<%- include('../partials/header') %>
+    <div class="container mx-auto py-8 px-4">
+        <h1 class="text-3xl text-center font-extrabold mb-8 text-blue-600 tracking-tight">Our Registered Homes</h1>
+        <div class="grid w-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <% registeredHomes.forEach (home => { %>
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl transition-shadow duration-300 flex flex-col">
+                    <img src="<%= home.photo %>" alt="<%= home.houseName %>" class="w-full h-48 object-cover rounded-t-xl">
+                    <div class="flex-1 flex flex-col gap-2 px-5 py-4">
+                        <h2 class="text-lg font-bold text-gray-800 mb-1 truncate"><%= home.houseName %></h2>
+                        <p class="text-gray-500 text-sm"><span class="font-semibold">Location:</span> <%= home.location %></p>
+                        <p class="text-gray-500 text-sm">
+                            <span class="font-semibold">Price/Night:</span> <span class="text-green-600 font-bold">Rs.<%= home.price %></span>
+                        </p>
+                        <div class="flex items-center mt-1">
+                            <span class="text-yellow-400 mr-1 text-base">
+                                <% for(let i = 0; i < home.rating; i++) { %>
+                                    &#9733;
+                                <% } %>
+                            </span>
+                            <span class="text-gray-400 text-xs ml-1">(<%= home.rating %>/5)</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-5 pb-4">
+                        <a href="/homes/<%=home._id%>" class="bg-green-500 hover:bg-green-600 text-white px-4 py-1.5 rounded-md text-sm font-semibold shadow transition-colors duration-200">Details</a>
+                        <%- include('../partials/favourites', {home:home}) %>       
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

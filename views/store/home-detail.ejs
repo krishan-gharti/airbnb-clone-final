@@ -1,0 +1,46 @@
+<%- include ('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/header') %>
+<div class="container mx-auto py-4">
+    <h1 class="text-xl text-center font-bold mb-4">Home Details</h1>
+    <div class="flex flex-col sm:flex-row bg-white rounded shadow border border-gray-200 overflow-hidden max-w-3xl mx-auto">
+        <!-- Main Image Section -->
+        <div class="sm:w-1/2 w-full">
+            <img src="<%= home.photo %>" alt="<%= home.houseName %>" class="w-full h-64 object-cover rounded-t sm:rounded-l sm:rounded-t-none">
+            <!-- Additional Images Gallery -->
+            <div class="grid grid-cols-3 gap-2 mt-2 px-2">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Living Room" class="h-20 w-full object-cover rounded shadow-sm">
+                <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80" alt="Bedroom" class="h-20 w-full object-cover rounded shadow-sm">
+                <img src="https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=400&q=80" alt="Kitchen" class="h-20 w-full object-cover rounded shadow-sm">
+            </div>
+        </div>
+        <!-- Info Section -->
+        <div class="sm:w-1/2 w-full flex flex-col justify-between p-6 gap-4">
+            <div>
+                <h2 class="text-lg font-semibold mb-2"><%= home.houseName %></h2>
+                <div class="mb-2">
+                    <span class="block text-gray-600 text-sm mb-1">
+                        <span class="font-medium">Location:</span> <%= home.location %>
+                    </span>
+                    <span class="block text-gray-600 text-sm mb-1">
+                        <span class="font-medium">Price:</span> Rs.<%= home.price %>
+                    </span>
+                </div>
+                <div class="flex items-center mb-2">
+                    <span class="text-yellow-500 mr-2 text-base">
+                        <% for(let i = 0; i < home.rating; i++) { %>
+                            &#9733;
+                        <% } %>
+                    </span>
+                    <span class="text-gray-500 text-xs">(<%= home.rating %>/5)</span>
+                </div>
+                <!-- Description Paragraph -->
+                <p class="text-gray-700 text-base mt-4 bg-gray-50 rounded p-3 shadow-sm">
+                    <%= home.description || "Experience comfort and elegance in this beautiful home, featuring spacious rooms, modern amenities, and a serene environment perfect for families or individuals seeking a peaceful retreat." %>
+                </p>
+            </div>
+            <%- include('../partials/favourites') %>
+        </div>
+    </div>
+</div>

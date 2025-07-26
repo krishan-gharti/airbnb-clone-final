@@ -1,0 +1,50 @@
+<%- include('../partials/head') %>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen">
+    <%- include('../partials/header') %>
+    <main class="flex flex-col items-center justify-center min-h-[80vh]">
+        <div class="bg-white shadow-xl rounded-2xl px-10 py-10 w-full max-w-md">
+            <h1 class="text-3xl text-center font-extrabold mb-8 text-purple-700">Sign in to your account</h1>
+            <form class="space-y-6" action="/login" method="POST"> 
+                <%- include('../partials/errors') %>  
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input
+                        class="w-full border border-gray-300 rounded-lg py-3 px-4 text-base focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+                        type="email"
+                        name="email"
+                        id="email"
+                        value="<%= oldInput.email ? oldInput.email : '' %>"
+                        placeholder="Enter your Email"
+                        required />
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input 
+                        class="w-full border border-gray-300 rounded-lg py-3 px-4 text-base focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Enter your Password"
+                        required />
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <input type="checkbox" id="remember" name="remember" class="mr-2">
+                        <label for="remember" class="text-sm text-gray-600">Remember me</label>
+                    </div>
+                </div>
+                <div>
+                    <input class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg w-full transition" 
+                        type="submit" 
+                        value="Sign In" />
+                </div>
+            </form>
+            <p class="mt-6 text-center text-sm text-gray-600">
+                Don't have an account?
+                <a href="/signup" class="text-purple-600 hover:underline font-semibold">Sign up</a>
+            </p>
+        </div>
+    </main>
+</body>
+</html>
